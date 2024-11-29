@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            text-align: center;
+        }
+        img {
+            animation-name: rotate;
+            animation-duration: 3s; /* Adjust speed */
+            animation-iteration-count: infinite;
+            animation-timing-function: linear; /* Smooth rotation */
+            border-radius: 50%; /* Make the image circular */
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg); /* Start at 0 degrees */
+            }
+            to {
+                transform: rotate(360deg); /* Complete a full circle */
+            }
+        }
+    </style>
+</head>
+<body>
+     
+     <img src="eleni.jpg" alt="eleni photo" height="200px" width="200px">
+     <div id="center">
+        <span id="mute">🔇</span>
+        <span id="unmute" style="display: none;">🔊</span>
+        <span id="start">⏯️</span>
+        <span id="pause">⏸️</span>
+    </div>
+    <audio src="elen music.mp3"  controls autoplay muted  style="display: none;" ></video>
+
+    <script>
+                           // Get the video element
+let audio = document.querySelector("audio");
+
+// Get the control buttons
+let mute = document.getElementById("mute");
+let start = document.getElementById("start");
+let pause = document.getElementById("pause");
+
+window.addEventListener("load", () => {
+    audio.muted = true; // Ensure autoplay is allowed
+    audio.play();
+});
+mute.addEventListener("click",()=>{
+     audio.muted=true;
+     mute.style.display = "none";
+     unmute.style.display = "inline";
+});
+
+unmute.addEventListener("click",()=>{
+    audio.muted=false;
+    unmute.style.display = "none";
+    mute.style.display = "inline";
+});
+
+start.addEventListener("click", () => {
+    audio.play();
+    audio.muted = false; // Unmute when playing
+});
+
+
+pause.addEventListener("click",()=>{
+    audio.pause();
+});
+
+    </script>
+</body>
+</html>
